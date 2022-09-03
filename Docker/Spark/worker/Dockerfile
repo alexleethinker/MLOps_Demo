@@ -1,4 +1,4 @@
-FROM spark:3.3
+FROM spark-master:3.3
 
 ENV SPARK_HOME='/spark-3.3.0-bin-hadoop3' 
 ENV SPARK_MASTER=spark://spark-master:7077
