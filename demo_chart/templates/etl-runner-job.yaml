@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-runner
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: etl-runner
+        image: python-runner
+        imagePullPolicy: IfNotPresent  # important needed when testing on local env
+        command: ["python",  "url_load.py", "--fileName=sample.json"]
+        resources: {}
+        workingDir: /home/Scripts
+      restartPolicy: Never
+status: {}

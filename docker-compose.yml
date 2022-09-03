@@ -5,7 +5,7 @@ services:
     build: 
       context: .
       dockerfile: ./Docker/Spark/master/Dockerfile
-    image: spark:3.3
+    image: spark-master:3.3
     container_name: spark-master
     hostname: spark-master
     environment:

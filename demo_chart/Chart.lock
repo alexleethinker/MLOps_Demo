@@ -1,0 +1,9 @@
+dependencies:
+- name: spark
+  repository: ""
+  version: 0.1.0
+- name: mongo
+  repository: ""
+  version: 0.1.0
+digest: sha256:ab1a81a57a874b47d8f35aab3e945f472ec86f1084eb896bfe1b9ce1444e486b
+generated: "2022-09-03T01:38:47.733503+02:00"

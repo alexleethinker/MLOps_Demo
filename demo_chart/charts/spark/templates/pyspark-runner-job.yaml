@@ -2,6 +2,12 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: pyspark-runner
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     spec:
@@ -14,6 +20,6 @@ spec:
         workingDir: /home/Scripts
         env:
         - name: SPARK_MASTER
-          value: "spark://spark-master:7077"
+          value: "spark://{{ template "master-fullname" . }}:{{ .Values.Master.ServicePort }}"
       restartPolicy: Never
 status: {}

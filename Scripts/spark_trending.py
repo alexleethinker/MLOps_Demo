@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     # can be replaced by os.
     import os
-    spark_master = "spark://spark-master:7077" or os.environ.get('SPARK_MASTER')
+    spark_master = os.environ.get('SPARK_MASTER') # "spark://spark-master:7077" 
     mongo_uri = "mongodb://mongo:27017"  or os.environ.get('MONGO_HOST')
     
     SparkTrends(fileName, spark_master, mongo_uri)

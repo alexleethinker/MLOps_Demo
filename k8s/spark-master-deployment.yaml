@@ -18,6 +18,7 @@ spec:
       containers:
         - name: spark-master
           image: spark:3.3
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
             - containerPort: 7077
@@ -32,6 +33,10 @@ spec:
               value: "no"
             - name: SPARK_SSL_ENABLED
               value: "no"
+            - name: SPARK_MASTER_HOST
+              value: spark-master
+            - name: SPARK_MASTER_PORT
+              value: "7077"
             # - name: DEPLOY_MODE
             #   value: "cluster"
           resources: {}
